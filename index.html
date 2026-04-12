@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bibliothèque d'Ouvertures</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#1a1208; --surface:#2c1e0a; --surface2:#3d2c12;
+  --border:#6b4a1e; --gold:#d4a030; --gold-light:#f0c84a;
+  --gold-dim:#9a7040; --text:#f5e6c8; --text-dim:#b8905a;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:'Crimson Text',Georgia,serif;
+  min-height:100vh;
+  background-image:radial-gradient(ellipse at 20% 10%,rgba(160,90,30,.2) 0%,transparent 50%),
+    radial-gradient(ellipse at 80% 90%,rgba(100,50,10,.25) 0%,transparent 50%);}
+header{text-align:center;padding:30px 20px 20px;}
+header h1{font-family:'Playfair Display',serif;font-size:2rem;color:var(--gold-light);
+  letter-spacing:.1em;text-shadow:0 2px 15px rgba(200,140,20,.4);}
+header p{color:var(--gold-dim);font-size:.85rem;margin-top:6px;letter-spacing:.2em;text-transform:uppercase;}
+
+/* Tabs */
+.tabs{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;padding:0 20px 20px;}
+.tab{background:var(--surface);border:1px solid var(--border);color:var(--text-dim);
+  padding:7px 18px;border-radius:20px;cursor:pointer;font-family:'Crimson Text',serif;
+  font-size:.85rem;transition:all .2s;}
+.tab:hover{border-color:var(--gold);color:var(--gold-light);}
+.tab.active{background:var(--surface2);border-color:var(--gold);color:var(--gold-light);font-weight:600;}
+
+/* Sections */
+.section{display:none;padding:0 20px 40px;max-width:1200px;margin:0 auto;}
+.section.active{display:block;}
+.section-title{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--gold);
+  border-bottom:1px solid var(--border);padding-bottom:8px;margin-bottom:16px;letter-spacing:.08em;}
+
+/* Groups */
+.group{margin-bottom:24px;}
+.group-title{font-size:.7rem;color:var(--gold-dim);text-transform:uppercase;letter-spacing:.2em;
+  margin-bottom:8px;padding-left:2px;}
+
+/* Table */
+table{width:100%;border-collapse:collapse;}
+tr{border-bottom:1px solid rgba(107,74,30,.3);transition:background .15s;}
+tr:hover{background:var(--surface);}
+td{padding:8px 10px;font-size:.85rem;}
+td:first-child{color:var(--text);font-weight:600;width:40%;}
+td:nth-child(2){color:var(--text-dim);font-size:.78rem;font-style:italic;width:35%;}
+td:last-child{text-align:right;width:25%;}
+.btn-load{background:linear-gradient(180deg,#5a3418,#3d2008);color:var(--gold-light);
+  border:1px solid var(--border);padding:4px 12px;border-radius:4px;
+  font-family:'Crimson Text',serif;font-size:.8rem;cursor:pointer;
+  text-decoration:none;display:inline-block;transition:all .15s;}
+.btn-load:hover{background:linear-gradient(180deg,#7a4828,#5a3010);border-color:var(--gold);}
+.games{font-size:.72rem;color:var(--gold-dim);}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>♟ Bibliothèque d'Ouvertures</h1>
+  <p>Cliquez sur une ouverture pour la charger dans le visionneur</p>
+</header>
+
+<div class="tabs">
+  <button class="tab active" onclick="showTab('e4')">1.e4 e5</button>
+  <button class="tab" onclick="showTab('e4d')">Défenses 1.e4</button>
+  <button class="tab" onclick="showTab('d4')">1.d4</button>
+  <button class="tab" onclick="showTab('d4d')">Défenses 1.d4</button>
+  <button class="tab" onclick="showTab('c4')">1.c4 Anglaise</button>
+  <button class="tab" onclick="showTab('autres')">Autres</button>
+</div>
+
+<div class="section active" id="tab-e4">
+
+  <div class="group">
+    <div class="group-title">Ouvertures de flanc et gambits</div>
+    <table>
+      <tr><td>Centre & Gambit Danois</td><td>1.e4 e5 2.d4 exd4</td><td class="games"><span class="games">7643 parties</span> <a class="btn-load" href="#" onclick="charger('e4/CenterGame-Danish.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Ouverture du Fou</td><td>1.e4 e5 2.Fc4</td><td><span class="games">20629</span> <a class="btn-load" href="#" onclick="charger('e4/BishopsOpening.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Gambit du Roi</td><td>1.e4 e5 2.f4</td><td><span class="games">15757</span> <a class="btn-load" href="#" onclick="charger('e4/KingsGambit.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Viennoise</td><td>1.e4 e5 2.Cc3</td><td><span class="games">23801</span> <a class="btn-load" href="#" onclick="charger('e4/Vienna.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Gambit Letton & Éléphant</td><td>1.e4 e5 2.Cf3 f5/d5</td><td><span class="games">1498</span> <a class="btn-load" href="#" onclick="charger('e4/Latvian-Elephant.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Philidor</td><td>1.e4 e5 2.Cf3 d6</td><td><span class="games">17284</span> <a class="btn-load" href="#" onclick="charger('e4/Philidor.pgn');return false;">Charger</a></td></tr>
+    </table>
+  </div>
+
+  <div class="group">
+    <div class="group-title">Petroff</div>
+    <table>
+      <tr><td>Petroff, autres 3e coups</td><td>1.e4 e5 2.Cf3 Cf6 3.Cc3/d4...</td><td><span class="games">25607</span> <a class="btn-load" href="#" onclick="charger('e4/PetroffOther3.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Petroff, ligne principale</td><td>1.e4 e5 2.Cf3 Cf6 3.Cxe5 d6</td><td><span class="games">24849</span> <a class="btn-load" href="#" onclick="charger('e4/PetroffMain.pgn');return false;">Charger</a></td></tr>
+    </table>
+  </div>
+
+  <div class="group">
+    <div class="group-title">Écossaise & dérivés</div>
+    <table>
+      <tr><td>Ponziani</td><td>1.e4 e5 2.Cf3 Cc6 3.c3</td><td><span class="games">4579</span> <a class="btn-load" href="#" onclick="charger('e4/Ponziani.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Trois Cavaliers</td><td>1.e4 e5 2.Cf3 Cc6 3.Cc3</td><td><span class="games">1762</span> <a class="btn-load" href="#" onclick="charger('e4/ThreeKnights.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Quatre Cavaliers</td><td>1.e4 e5 2.Cf3 Cc6 3.Cc3 Cf6</td><td><span class="games">39689</span> <a class="btn-load" href="#" onclick="charger('e4/FourKnights.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Gambit Göring</td><td>1.e4 e5 2.Cf3 Cc6 3.d4 exd4 4.c3</td><td><span class="games">2465</span> <a class="btn-load" href="#" onclick="charger('e4/GoringGambit.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Gambit Écossais</td><td>1.e4 e5 2.Cf3 Cc6 3.d4 exd4 4.Fc4</td><td><span class="games">12578</span> <a class="btn-load" href="#" onclick="charger('e4/ScotchGambit.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Écossaise, autres 4e coups</td><td>1.e4 e5 2.Cf3 Cc6 3.d4 exd4 4.Cxd4...</td><td><span class="games">7665</span> <a class="btn-load" href="#" onclick="charger('e4/ScotchOther4.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Écossaise, 4...Cf6</td><td>1.e4 e5 2.Cf3 Cc6 3.d4 exd4 4.Cxd4 Cf6</td><td><span class="games">15622</span> <a class="btn-load" href="#" onclick="charger('e4/Scotch4Nf6.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Écossaise, 4...Fc5</td><td>1.e4 e5 2.Cf3 Cc6 3.d4 exd4 4.Cxd4 Fc5</td><td><span class="games">14529</span> <a class="btn-load" href="#" onclick="charger('e4/Scotch4Bc5.pgn');return false;">Charger</a></td></tr>
+    </table>
+  </div>
+
+  <div class="group">
+    <div class="group-title">Italienne & Deux Cavaliers</div>
+    <table>
+      <tr><td>Hongroise</td><td>1.e4 e5 2.Cf3 Cc6 3.Fc4 Fe7</td><td><span class="games">4295</span> <a class="btn-load" href="#" onclick="charger('e4/Hungarian.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Deux Cavaliers</td><td>1.e4 e5 2.Cf3 Cc6 3.Fc4 Cf6</td><td><span class="games">46103</span> <a class="btn-load" href="#" onclick="charger('e4/TwoKnights.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Giuoco Piano (Italienne)</td><td>1.e4 e5 2.Cf3 Cc6 3.Fc4 Fc5</td><td><span class="games">52811</span> <a class="btn-load" href="#" onclick="charger('e4/GiuocoPiano.pgn');return false;">Charger</a></td></tr>
+    </table>
+  </div>
+
+  <div class="group">
+    <div class="group-title">Ruy Lopez (Espagnole)</div>
+    <table>
+      <tr><td>Ruy Lopez, autres 3e coups</td><td>1.e4 e5 2.Cf3 Cc6 3.Fb5 d6/Cd4...</td><td><span class="games">16760</span> <a class="btn-load" href="#" onclick="charger('e4/RuyLopezOther3.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Classique</td><td>3.Fb5 Fc5</td><td><span class="games">5707</span> <a class="btn-load" href="#" onclick="charger('e4/RuyLopezClassical.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Schliemann</td><td>3.Fb5 f5</td><td><span class="games">8546</span> <a class="btn-load" href="#" onclick="charger('e4/RuyLopezSchliemann.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Berlin</td><td>3.Fb5 Cf6</td><td><span class="games">32330</span> <a class="btn-load" href="#" onclick="charger('e4/RuyLopezBerlin.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Échange</td><td>3.Fb5 a6 4.Fxc6</td><td><span class="games">16921</span> <a class="btn-load" href="#" onclick="charger('e4/RuyLopezExchange.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Steinitz Moderne</td><td>3.Fb5 a6 4.Fa4 d6</td><td><span class="games">12070</span> <a class="btn-load" href="#" onclick="charger('e4/RuyLopezModSteinitz.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Autres 5e coups</td><td>3.Fb5 a6 4.Fa4 Cf6 5.d3/d4/De2</td><td><span class="games">20988</span> <a class="btn-load" href="#" onclick="charger('e4/RuyLopezOther5.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Ouverte</td><td>5.O-O Cxe4</td><td><span class="games">10185</span> <a class="btn-load" href="#" onclick="charger('e4/RuyLopezOpen.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Möller & Steinitz Différé</td><td>5.O-O Fc5/d6</td><td><span class="games">2848</span> <a class="btn-load" href="#" onclick="charger('e4/RuyMoeller-SteinDef.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Archangelsk</td><td>5.O-O b5 6.Fb3 Fb7</td><td><span class="games">4481</span> <a class="btn-load" href="#" onclick="charger('e4/RuyLopezArchangelsk.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Autres 6e coups</td><td>5.O-O Fe7 6.Fxc6/De2/d4...</td><td><span class="games">13171</span> <a class="btn-load" href="#" onclick="charger('e4/RuyLopezOther6.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Anti-Marshall</td><td>6.Te1 b5 7.Fb3 O-O 8.a4/h3...</td><td><span class="games">5182</span> <a class="btn-load" href="#" onclick="charger('e4/RuyLopezAntiMarshall.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Attaque Marshall</td><td>8.c3 d5</td><td><span class="games">3893</span> <a class="btn-load" href="#" onclick="charger('e4/RuyLopezMarshall.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Autres 9e coups</td><td>8.c3 O-O 9.d4/d3/a4</td><td><span class="games">8785</span> <a class="btn-load" href="#" onclick="charger('e4/RuyLopezOther9.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Karpov, Smyslov, Kholmov</td><td>9.h3 Cd7/h6/Fe6</td><td><span class="games">1382</span> <a class="btn-load" href="#" onclick="charger('e4/RuyLopezKar-Smy-Khol.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Breyer</td><td>9.h3 Cb8</td><td><span class="games">7811</span> <a class="btn-load" href="#" onclick="charger('e4/RuyLopezBreyer.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Flohr-Zaïtsev</td><td>9.h3 Fb7</td><td><span class="games">4963</span> <a class="btn-load" href="#" onclick="charger('e4/RuyLopezFlohr-Zaitsev.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Chigorin (Ligne Principale)</td><td>9.h3 Ca5 10.Fc2 c5 11.d4</td><td><span class="games">11305</span> <a class="btn-load" href="#" onclick="charger('e4/RuyLopezChigorin.pgn');return false;">Charger</a></td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- DÉFENSES 1.e4 -->
+<div class="section" id="tab-e4d">
+
+  <div class="group">
+    <div class="group-title">Défenses rares</div>
+    <table>
+      <tr><td>Défense Owen</td><td>1.e4 b6</td><td><span class="games">7829</span> <a class="btn-load" href="#" onclick="charger('e4-defense/OwenDefense.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Défense Nimzowitsch</td><td>1.e4 Cc6</td><td><span class="games">18894</span> <a class="btn-load" href="#" onclick="charger('e4-defense/NimzoDefense.pgn');return false;">Charger</a></td></tr>
+    </table>
+  </div>
+
+  <div class="group">
+    <div class="group-title">Scandinave</div>
+    <table>
+      <tr><td>Scandinave 3...Dd6 et 3...Dd8</td><td>1.e4 d5 2.exd5 Dxd5 3.Cc3</td><td><span class="games">17721</span> <a class="btn-load" href="#" onclick="charger('e4-defense/Scand3Qd6-Qd8.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Scandinave 3...Da5</td><td>1.e4 d5 2.exd5 Dxd5 3.Cc3 Da5</td><td><span class="games">22685</span> <a class="btn-load" href="#" onclick="charger('e4-defense/Scand2Qxd5-3Qa5.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Scandinave 2...Cf6 3.d4</td><td>1.e4 d5 2.exd5 Cf6 3.d4</td><td><span class="games">11706</span> <a class="btn-load" href="#" onclick="charger('e4-defense/Scand2Nf6-3d4.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Scandinave 2...Cf6 autres</td><td>1.e4 d5 2.exd5 Cf6 3.c4/Fb5+...</td><td><span class="games">15522</span> <a class="btn-load" href="#" onclick="charger('e4-defense/Scand2Nf6Other.pgn');return false;">Charger</a></td></tr>
+    </table>
+  </div>
+
+  <div class="group">
+    <div class="group-title">Alekhine</div>
+    <table>
+      <tr><td>Alekhine, 2.Cc3 d5</td><td>1.e4 Cf6 2.Cc3 d5</td><td><span class="games">7481</span> <a class="btn-load" href="#" onclick="charger('e4-defense/Alekhine2Nc3-d5.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Alekhine, autres 3e coups</td><td>1.e4 Cf6 2.e5 Cd5 3.c4/Cc3/Cf3...</td><td><span class="games">9793</span> <a class="btn-load" href="#" onclick="charger('e4-defense/AlekhineOther3.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Alekhine, Échange</td><td>3.d4 d6 4.c4 Cb6 5.exd6</td><td><span class="games">9408</span> <a class="btn-load" href="#" onclick="charger('e4-defense/AlekhineExchange.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Alekhine, Quatre Pions</td><td>4.c4 Cb6 5.f4</td><td><span class="games">4125</span> <a class="btn-load" href="#" onclick="charger('e4-defense/Alekhine4Pawns.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Alekhine, Moderne</td><td>4.c4 Cb6 5.Cf3</td><td><span class="games">17081</span> <a class="btn-load" href="#" onclick="charger('e4-defense/AlekhineModern.pgn');return false;">Charger</a></td></tr>
+    </table>
+  </div>
+
+  <div class="group">
+    <div class="group-title">Moderne & Pirc</div>
+    <table>
+      <tr><td>Moderne, 3.Cf3</td><td>1.e4 g6 2.d4 Fg7 3.Cf3</td><td><span class="games">22801</span> <a class="btn-load" href="#" onclick="charger('e4-defense/Modern3Nf3.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Moderne, 3.Cc3 d6</td><td>1.e4 g6 2.d4 Fg7 3.Cc3 d6</td><td><span class="games">38281</span> <a class="btn-load" href="#" onclick="charger('e4-defense/Modern3Nc3-d6.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Moderne, 3.Cc3 c6</td><td>1.e4 g6 2.d4 Fg7 3.Cc3 c6</td><td><span class="games">13642</span> <a class="btn-load" href="#" onclick="charger('e4-defense/Modern3Nc3-c6.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Moderne, 3.Cc3 autres</td><td>1.e4 g6 2.d4 Fg7 3.Cc3 c5/a6/d5...</td><td><span class="games">6345</span> <a class="btn-load" href="#" onclick="charger('e4-defense/Modern3Nc3Other.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Moderne, autres 3e coups</td><td>1.e4 g6 2.d4 Fg7 3.c3/f4/Fe3/Fc4</td><td><span class="games">7805</span> <a class="btn-load" href="#" onclick="charger('e4-defense/ModernOther3.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Pirc, autres 3e coups blancs</td><td>1.e4 d6 2.d4 Cf6 3.Fd3/f3/Cd2</td><td><span class="games">8845</span> <a class="btn-load" href="#" onclick="charger('e4-defense/PircOtherWhite3.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Pirc, autres 3e coups noirs</td><td>1.e4 d6 2.d4 Cf6 3.Cc3 c6/e5/Cbd7</td><td><span class="games">40599</span> <a class="btn-load" href="#" onclick="charger('e4-defense/PircOtherBlack3.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Pirc, Attaque Autrichienne</td><td>1.e4 d6 2.d4 Cf6 3.Cc3 g6 4.f4</td><td><span class="games">10838</span> <a class="btn-load" href="#" onclick="charger('e4-defense/PircAustrian.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Pirc, autres 4e coups blancs</td><td>3.Cc3 g6 4.Fe3/Fg5/f3/g3/Fe2</td><td><span class="games">18880</span> <a class="btn-load" href="#" onclick="charger('e4-defense/PircOtherWhite4.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Pirc, Classique</td><td>3.Cc3 g6 4.Cf3</td><td><span class="games">11562</span> <a class="btn-load" href="#" onclick="charger('e4-defense/PircClassical.pgn');return false;">Charger</a></td></tr>
+    </table>
+  </div>
+
+  <div class="group">
+    <div class="group-title">Caro-Kann</div>
+    <table>
+      <tr><td>Caro-Kann, 2.c4</td><td>1.e4 c6 2.c4</td><td><span class="games">14388</span> <a class="btn-load" href="#" onclick="charger('e4-defense/Caro-Kann2c4.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Deux Cavaliers</td><td>1.e4 c6 2.Cc3 d5 3.Cf3</td><td><span class="games">23006</span> <a class="btn-load" href="#" onclick="charger('e4-defense/Caro-Kann2Knight.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Échange</td><td>1.e4 c6 2.d4 d5 3.exd5 cxd5 4.Fd3</td><td><span class="games">19210</span> <a class="btn-load" href="#" onclick="charger('e4-defense/Caro-KannEx.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Panov-Botvinnik</td><td>1.e4 c6 2.d4 d5 3.exd5 cxd5 4.c4</td><td><span class="games">22756</span> <a class="btn-load" href="#" onclick="charger('e4-defense/Caro-KannPan-Bot.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Avancée</td><td>1.e4 c6 2.d4 d5 3.e5</td><td><span class="games">55511</span> <a class="btn-load" href="#" onclick="charger('e4-defense/Caro-KannAdv.pgn');return false;">Charger</a></td></tr>
+      <tr><td>4...Cf6</td><td>3.Cc3 dxe4 4.Cxe4 Cf6</td><td><span class="games">18513</span> <a class="btn-load" href="#" onclick="charger('e4-defense/Caro-Kann4Nf6.pgn');return false;">Charger</a></td></tr>
+      <tr><td>4...Cd7</td><td>3.Cc3 dxe4 4.Cxe4 Cd7</td><td><span class="games">12216</span> <a class="btn-load" href="#" onclick="charger('e4-defense/Caro-Kann4Nd7.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Classique</td><td>3.Cc3 dxe4 4.Cxe4 Ff5</td><td><span class="games">29275</span> <a class="btn-load" href="#" onclick="charger('e4-defense/Caro-KannClassic.pgn');return false;">Charger</a></td></tr>
+    </table>
+  </div>
+
+  <div class="group">
+    <div class="group-title">Française</div>
+    <table>
+      <tr><td>Attaque KID</td><td>1.e4 e6 2.d3</td><td><span class="games">22062</span> <a class="btn-load" href="#" onclick="charger('e4-defense/FrenchKIA.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Autres 2e coups</td><td>1.e4 e6 2.Cf3/De2/Cc3/b3/c4</td><td><span class="games">26706</span> <a class="btn-load" href="#" onclick="charger('e4-defense/FrenchOther2.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Échange</td><td>1.e4 e6 2.d4 d5 3.exd5</td><td><span class="games">27789</span> <a class="btn-load" href="#" onclick="charger('e4-defense/FrenchExchange.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Schlechter</td><td>1.e4 e6 2.d4 d5 3.Fd3</td><td><span class="games">5386</span> <a class="btn-load" href="#" onclick="charger('e4-defense/FrenchSchlechter.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Avancée</td><td>1.e4 e6 2.d4 d5 3.e5 c5 4.c3</td><td><span class="games">36996</span> <a class="btn-load" href="#" onclick="charger('e4-defense/FrenchAdvance.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Tarrasch, autres 3e coups</td><td>3.Cd2 Cc6/Fe7/a6</td><td><span class="games">16986</span> <a class="btn-load" href="#" onclick="charger('e4-defense/FrTarraschOther3.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Tarrasch, 3...c5</td><td>3.Cd2 c5</td><td><span class="games">26586</span> <a class="btn-load" href="#" onclick="charger('e4-defense/FrTarrasch3c5.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Tarrasch, 3...Cf6</td><td>3.Cd2 Cf6</td><td><span class="games">28104</span> <a class="btn-load" href="#" onclick="charger('e4-defense/FrTarrasch3Nf6.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Rubinstein</td><td>3.Cc3 dxe4 4.Cxe4</td><td><span class="games">20144</span> <a class="btn-load" href="#" onclick="charger('e4-defense/FrenchRubinstein.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Winawer, autres 4e coups blancs</td><td>3.Cc3 Fb4 4.Ce2/exd5/Fd3/a3</td><td><span class="games">13405</span> <a class="btn-load" href="#" onclick="charger('e4-defense/FrWinawerOtherW4.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Winawer, autres 4e coups noirs</td><td>4.e5 Ce7/b6/Dd7</td><td><span class="games">11813</span> <a class="btn-load" href="#" onclick="charger('e4-defense/FrWinawerOtherB4.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Winawer, Ligne Principale</td><td>4.e5 c5</td><td><span class="games">26193</span> <a class="btn-load" href="#" onclick="charger('e4-defense/FrWinawerMain.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Steinitz</td><td>3.Cc3 Cf6 4.e5</td><td><span class="games">21802</span> <a class="btn-load" href="#" onclick="charger('e4-defense/FrenchSteinitz.pgn');return false;">Charger</a></td></tr>
+      <tr><td>MacCutcheon</td><td>3.Cc3 Cf6 4.Fg5 Fb4</td><td><span class="games">6283</span> <a class="btn-load" href="#" onclick="charger('e4-defense/FrenchMacCutcheon.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Burn</td><td>3.Cc3 Cf6 4.Fg5 dxe4</td><td><span class="games">9564</span> <a class="btn-load" href="#" onclick="charger('e4-defense/FrenchBurn.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Classique</td><td>3.Cc3 Cf6 4.Fg5 Fe7</td><td><span class="games">9132</span> <a class="btn-load" href="#" onclick="charger('e4-defense/FrenchClassical.pgn');return false;">Charger</a></td></tr>
+    </table>
+  </div>
+
+  <div class="group">
+    <div class="group-title">Sicilienne</div>
+    <table>
+      <tr><td>Divers 2e coups</td><td>1.e4 c5 2.d3/b3/c4/g3...</td><td><span class="games">35729</span> <a class="btn-load" href="#" onclick="charger('e4-defense/SicilianMisc2.pgn');return false;">Charger</a></td></tr>
+      <tr><td>2.f4</td><td>1.e4 c5 2.f4</td><td><span class="games">7136</span> <a class="btn-load" href="#" onclick="charger('e4-defense/Sicilian2f4.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Smith-Morra</td><td>1.e4 c5 2.d4 cxd4 3.c3</td><td><span class="games">14636</span> <a class="btn-load" href="#" onclick="charger('e4-defense/SicilianSmith-Morra.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Alapin, autres 2e coups</td><td>1.e4 c5 2.c3 e6/d6/g6...</td><td><span class="games">20729</span> <a class="btn-load" href="#" onclick="charger('e4-defense/SicilianAlapinOther2.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Alapin, 2...Cf6</td><td>1.e4 c5 2.c3 Cf6</td><td><span class="games">29421</span> <a class="btn-load" href="#" onclick="charger('e4-defense/SicilianAlapin2Nf6.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Alapin, 2...d5</td><td>1.e4 c5 2.c3 d5</td><td><span class="games">27532</span> <a class="btn-load" href="#" onclick="charger('e4-defense/SicilianAlapin2d5.pgn');return false;">Charger</a></td></tr>
+      <tr><td>2.Cc3 e6</td><td>1.e4 c5 2.Cc3 e6</td><td><span class="games">18946</span> <a class="btn-load" href="#" onclick="charger('e4-defense/Sicilian2Nc3-e6.pgn');return false;">Charger</a></td></tr>
+      <tr><td>2.Cc3 d6</td><td>1.e4 c5 2.Cc3 d6</td><td><span class="games">18885</span> <a class="btn-load" href="#" onclick="charger('e4-defense/Sicilian2Nc3-d6.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Grand Prix</td><td>1.e4 c5 2.Cc3 Cc6 3.f4</td><td><span class="games">14397</span> <a class="btn-load" href="#" onclick="charger('e4-defense/SicilianGrandPrix.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Fermée, autres 3e coups</td><td>2.Cc3 Cc6 3.Cf3/Cge2/Fb5</td><td><span class="games">41127</span> <a class="btn-load" href="#" onclick="charger('e4-defense/SicilianClosedOther3.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Fermée, Ligne Principale</td><td>2.Cc3 Cc6 3.g3</td><td><span class="games">22934</span> <a class="btn-load" href="#" onclick="charger('e4-defense/SicilianClosedMain.pgn');return false;">Charger</a></td></tr>
+      <tr><td>2.Cf3, autres 2e coups</td><td>1.e4 c5 2.Cf3 g6/a6/Cf6</td><td><span class="games">50074</span> <a class="btn-load" href="#" onclick="charger('e4-defense/Sicilian2Nf3Other2.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Rossolimo</td><td>1.e4 c5 2.Cf3 Cc6 3.Fb5</td><td><span class="games">58364</span> <a class="btn-load" href="#" onclick="charger('e4-defense/SicilianRossolimo.pgn');return false;">Charger</a></td></tr>
+      <tr><td>2...Cc6, 4...Dc7/Db6</td><td>3.d4 cxd4 4.Cxd4 Dc7/Db6</td><td><span class="games">10159</span> <a class="btn-load" href="#" onclick="charger('e4-defense/Sic2Nc6-4Qc7-4Qb6.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Lowenthal</td><td>3.d4 cxd4 4.Cxd4 e5</td><td><span class="games">19108</span> <a class="btn-load" href="#" onclick="charger('e4-defense/SicilianLowenthal.pgn');return false;">Charger</a></td></tr>
+      <tr><td>2...Cc6, autres 5e coups</td><td>4.Cxd4 Cf6 5.Cc3 g6/a6/Db6</td><td><span class="games">3418</span> <a class="btn-load" href="#" onclick="charger('e4-defense/Sicilian2Nc6Other5.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Dragon Accéléré</td><td>3.d4 cxd4 4.Cxd4 g6</td><td><span class="games">33767</span> <a class="btn-load" href="#" onclick="charger('e4-defense/SicilianAccelDragon.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Sveshnikov (Pélican)</td><td>5.Cc3 e5 6.Cdb5 d6</td><td><span class="games">31737</span> <a class="btn-load" href="#" onclick="charger('e4-defense/SicilianSveshnikov.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Kan, autres 5e coups</td><td>3.d4 cxd4 4.Cxd4 a6 5.Fe2/Fe3/g3</td><td><span class="games">3584</span> <a class="btn-load" href="#" onclick="charger('e4-defense/SicilianKanOther5.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Kan, 5.c4</td><td>4.Cxd4 a6 5.c4</td><td><span class="games">9806</span> <a class="btn-load" href="#" onclick="charger('e4-defense/SicilianKan5c4.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Kan, 5.Cc3</td><td>4.Cxd4 a6 5.Cc3</td><td><span class="games">26257</span> <a class="btn-load" href="#" onclick="charger('e4-defense/SicilianKan5Nc3.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Kan, 5.Fd3</td><td>4.Cxd4 a6 5.Fd3</td><td><span class="games">23377</span> <a class="btn-load" href="#" onclick="charger('e4-defense/SicilianKan5Bd3.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Taimanov, autres 5e coups</td><td>4.Cxd4 Cc6 5.Fe3/Cxc6/c4/Fe2/g3</td><td><span class="games">5949</span> <a class="btn-load" href="#" onclick="charger('e4-defense/SicilianTaimanovOther5.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Taimanov, 5.Cb5</td><td>4.Cxd4 Cc6 5.Cb5</td><td><span class="games">5253</span> <a class="btn-load" href="#" onclick="charger('e4-defense/SicilianTaimanov5Nb5.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Taimanov, Ligne Principale</td><td>4.Cxd4 Cc6 5.Cc3</td><td><span class="games">51333</span> <a class="btn-load" href="#" onclick="charger('e4-defense/SicilianTaimanovMain.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Moscou</td><td>1.e4 c5 2.Cf3 d6 3.Fb5+</td><td><span class="games">48229</span> <a class="btn-load" href="#" onclick="charger('e4-defense/SicilianMoscow.pgn');return false;">Charger</a></td></tr>
+      <tr><td>2...d6, 4.Dxd4</td><td>1.e4 c5 2.Cf3 d6 3.d4 cxd4 4.Dxd4</td><td><span class="games">15552</span> <a class="btn-load" href="#" onclick="charger('e4-defense/Sicilian2d6-4Qxd4.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Dragon, autres 6e coups</td><td>5.Cc3 g6 6.g3/f4/f3/Fg5</td><td><span class="games">5967</span> <a class="btn-load" href="#" onclick="charger('e4-defense/SicilianDragonOther6.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Dragon, 6.Fe2 et 6.Fc4</td><td>5.Cc3 g6 6.Fe2/Fc4</td><td><span class="games">6134</span> <a class="btn-load" href="#" onclick="charger('e4-defense/SicDragon6Be2-6Bc4.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Dragon, Attaque Yougoslave</td><td>5.Cc3 g6 6.Fe3 Fg7 7.f3</td><td><span class="games">24934</span> <a class="btn-load" href="#" onclick="charger('e4-defense/SicilianDragonYugoslav.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Classique, autres 6e coups</td><td>5.Cc3 Cc6 6.Fe2/Fe3/f3/g3/f4</td><td><span class="games">19904</span> <a class="btn-load" href="#" onclick="charger('e4-defense/SicilianClassicalOther6.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Classique Sozin</td><td>5.Cc3 Cc6 6.Fc4</td><td><span class="games">13670</span> <a class="btn-load" href="#" onclick="charger('e4-defense/SicilianClassicalSozin.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Richter-Rauzer</td><td>5.Cc3 Cc6 6.Fg5</td><td><span class="games">32084</span> <a class="btn-load" href="#" onclick="charger('e4-defense/SicilianRichter-Rauzer.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Scheveningen</td><td>5.Cc3 e6</td><td><span class="games">24534</span> <a class="btn-load" href="#" onclick="charger('e4-defense/SicilianScheveningen.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Najdorf, 6.a4</td><td>5.Cc3 a6 6.a4</td><td><span class="games">4272</span> <a class="btn-load" href="#" onclick="charger('e4-defense/SicilianNajdorf6a4.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Najdorf, 6.g3</td><td>5.Cc3 a6 6.g3</td><td><span class="games">5965</span> <a class="btn-load" href="#" onclick="charger('e4-defense/SicilianNajdorf6g3.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Najdorf, 6.f3</td><td>5.Cc3 a6 6.f3</td><td><span class="games">8044</span> <a class="btn-load" href="#" onclick="charger('e4-defense/SicilianNajdorf6f3.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Najdorf, 6.f4</td><td>5.Cc3 a6 6.f4</td><td><span class="games">7069</span> <a class="btn-load" href="#" onclick="charger('e4-defense/SicilianNajdorf6f4.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Najdorf Fischer-Sozin</td><td>5.Cc3 a6 6.Fc4</td><td><span class="games">14361</span> <a class="btn-load" href="#" onclick="charger('e4-defense/SicilianNajdorf6Bc4.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Najdorf, 6.Fe3</td><td>5.Cc3 a6 6.Fe3</td><td><span class="games">30451</span> <a class="btn-load" href="#" onclick="charger('e4-defense/SicilianNajdorf6Be3.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Najdorf, 6.Fe2</td><td>5.Cc3 a6 6.Fe2</td><td><span class="games">25891</span> <a class="btn-load" href="#" onclick="charger('e4-defense/SicilianNajdorf6Be2.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Najdorf, 6.Fg5 (Principale)</td><td>5.Cc3 a6 6.Fg5</td><td><span class="games">31190</span> <a class="btn-load" href="#" onclick="charger('e4-defense/SicilianNajdorf6Bg5.pgn');return false;">Charger</a></td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- 1.d4 -->
+<div class="section" id="tab-d4">
+  <div class="group">
+    <div class="group-title">Systèmes de flanc</div>
+    <table>
+      <tr><td>Trompowsky, 2...Ce4</td><td>1.d4 Cf6 2.Fg5 Ce4</td><td><span class="games">12670</span> <a class="btn-load" href="#" onclick="charger('d4/Trompowsky2Ne4.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Trompowsky, 2...e6</td><td>1.d4 Cf6 2.Fg5 e6</td><td><span class="games">11039</span> <a class="btn-load" href="#" onclick="charger('d4/Trompowsky2e6.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Trompowsky, autres</td><td>1.d4 Cf6 2.Fg5 d5/c5/g6</td><td><span class="games">21583</span> <a class="btn-load" href="#" onclick="charger('d4/TrompowskyOther.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Torre, 2...e6</td><td>1.d4 Cf6 2.Cf3 e6 3.Fg5</td><td><span class="games">14170</span> <a class="btn-load" href="#" onclick="charger('d4/Torre2e6.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Torre, 2...g6</td><td>1.d4 Cf6 2.Cf3 g6 3.Fg5</td><td><span class="games">15584</span> <a class="btn-load" href="#" onclick="charger('d4/Torre2g6.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Système London, 2...e6</td><td>1.d4 Cf6 2.Cf3 e6 3.Ff4</td><td><span class="games">13983</span> <a class="btn-load" href="#" onclick="charger('d4/London2e6.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Système London, 2...g6</td><td>1.d4 Cf6 2.Cf3 g6 3.Ff4</td><td><span class="games">14586</span> <a class="btn-load" href="#" onclick="charger('d4/London2g6.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Hodgson</td><td>1.d4 d5 2.Fg5</td><td><span class="games">6878</span> <a class="btn-load" href="#" onclick="charger('d4/Hodgson.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Système Colle</td><td>1.d4 d5 2.Cf3 Cf6 3.e3</td><td><span class="games">17011</span> <a class="btn-load" href="#" onclick="charger('d4/Colle.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Semi-Benoni</td><td>1.d4 c5 2.d5 e5</td><td><span class="games">5474</span> <a class="btn-load" href="#" onclick="charger('d4/SemiBenoni.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Moderne (1.d4 d6)</td><td>1.d4 d6 2.c4 g6 3.Cc3 Fg7 4.e4</td><td><span class="games">17358</span> <a class="btn-load" href="#" onclick="charger('d4/Modern.pgn');return false;">Charger</a></td></tr>
+    </table>
+  </div>
+  <div class="group">
+    <div class="group-title">Catalane</div>
+    <table>
+      <tr><td>Catalane, 3...Fb4</td><td>1.d4 Cf6 2.c4 e6 3.g3 Fb4+</td><td><span class="games">8416</span> <a class="btn-load" href="#" onclick="charger('d4/Catalan3Bb4.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Catalane, 3...c5</td><td>1.d4 Cf6 2.c4 e6 3.g3 c5</td><td><span class="games">7604</span> <a class="btn-load" href="#" onclick="charger('d4/Catalan3c5.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Catalane Ouverte</td><td>3.g3 d5 4.Fg2 dxc4</td><td><span class="games">3816</span> <a class="btn-load" href="#" onclick="charger('d4/CatalanOpen.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Catalane Fermée</td><td>3.g3 d5 4.Fg2 Fe7 5.Cf3</td><td><span class="games">27371</span> <a class="btn-load" href="#" onclick="charger('d4/CatalanClosed.pgn');return false;">Charger</a></td></tr>
+    </table>
+  </div>
+  <div class="group">
+    <div class="group-title">Benoni & défenses indiennes</div>
+    <table>
+      <tr><td>Cavaliers Noirs Tango</td><td>1.d4 Cf6 2.c4 Cc6</td><td><span class="games">4305</span> <a class="btn-load" href="#" onclick="charger('d4/BlackKnightTango.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Gambit Budapest</td><td>1.d4 Cf6 2.c4 e5</td><td><span class="games">12259</span> <a class="btn-load" href="#" onclick="charger('d4/BudapestGambit.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Vieil Indien</td><td>1.d4 Cf6 2.c4 d6</td><td><span class="games">20424</span> <a class="btn-load" href="#" onclick="charger('d4/OldIndian.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Benoni Tchèque</td><td>1.d4 Cf6 2.c4 c5 3.d5 e5 4.Cc3 d6</td><td><span class="games">5798</span> <a class="btn-load" href="#" onclick="charger('d4/CzechBenoni.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Gambit Benko (Volga)</td><td>1.d4 Cf6 2.c4 c5 3.d5 b5</td><td><span class="games">50300</span> <a class="btn-load" href="#" onclick="charger('d4/BenkoGambit.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Benoni Moderne, 6.Cf3</td><td>3.d5 e6 4.Cc3 exd5 5.cxd5 d6 6.Cf3</td><td><span class="games">16148</span> <a class="btn-load" href="#" onclick="charger('d4/ModernBenoni6Nf3.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Benoni Moderne, 6.e4</td><td>3.d5 e6 4.Cc3 exd5 5.cxd5 d6 6.e4</td><td><span class="games">12786</span> <a class="btn-load" href="#" onclick="charger('d4/ModernBenoni6e4.pgn');return false;">Charger</a></td></tr>
+    </table>
+  </div>
+  <div class="group">
+    <div class="group-title">Hollandaise</div>
+    <table>
+      <tr><td>Hollandaise Leningrad</td><td>1.d4 f5 2.c4 Cf6 3.g3 g6 4.Fg2 Fg7 5.Cf3 O-O 6.O-O</td><td><span class="games">7486</span> <a class="btn-load" href="#" onclick="charger('d4/DutchLeningrad.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Hollandaise Classique</td><td>1.d4 f5 2.c4 Cf6 3.g3 e6 4.Fg2</td><td><span class="games">7646</span> <a class="btn-load" href="#" onclick="charger('d4/DutchClassical.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Hollandaise, 3.Cc3</td><td>1.d4 f5 2.c4 Cf6 3.Cc3</td><td><span class="games">6300</span> <a class="btn-load" href="#" onclick="charger('d4/Dutch3Nc3.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Hollandaise, autres</td><td>1.d4 f5 2.Cc3/Fg5/e4</td><td><span class="games">14025</span> <a class="btn-load" href="#" onclick="charger('d4/DutchOther.pgn');return false;">Charger</a></td></tr>
+    </table>
+  </div>
+  <div class="group">
+    <div class="group-title">Grünfeld</div>
+    <table>
+      <tr><td>Grünfeld Fianchetto</td><td>1.d4 Cf6 2.c4 g6 3.g3 d5 4.Fg2 Fg7 5.Cf3 O-O 6.O-O</td><td><span class="games">9588</span> <a class="btn-load" href="#" onclick="charger('d4/GrunfeldFianchetto.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Grünfeld, 4.Cf3</td><td>1.d4 Cf6 2.c4 g6 3.Cc3 d5 4.Cf3</td><td><span class="games">19300</span> <a class="btn-load" href="#" onclick="charger('d4/Grunfeld4Nf3.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Grünfeld, autres</td><td>3.Cc3 d5 4.Ff4/Fg5/e3/Db3</td><td><span class="games">12028</span> <a class="btn-load" href="#" onclick="charger('d4/GrunfeldOther.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Grünfeld Échange</td><td>4.cxd5 Cxd5 5.e4 Cxc3 6.bxc3 Fg7</td><td><span class="games">23110</span> <a class="btn-load" href="#" onclick="charger('d4/GrunfeldExchange.pgn');return false;">Charger</a></td></tr>
+    </table>
+  </div>
+  <div class="group">
+    <div class="group-title">Bogo-Indienne & Dame Indienne</div>
+    <table>
+      <tr><td>Bogo-Indienne, 4.Fd2</td><td>1.d4 Cf6 2.c4 e6 3.Cf3 Fb4+ 4.Fd2</td><td><span class="games">21376</span> <a class="btn-load" href="#" onclick="charger('d4/Bogo4Bd2.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Bogo-Indienne, 4.Cbd2</td><td>1.d4 Cf6 2.c4 e6 3.Cf3 Fb4+ 4.Cbd2</td><td><span class="games">12462</span> <a class="btn-load" href="#" onclick="charger('d4/Bogo4Nbd2.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Dame Indienne, 4.a3</td><td>1.d4 Cf6 2.c4 e6 3.Cf3 b6 4.a3</td><td><span class="games">13539</span> <a class="btn-load" href="#" onclick="charger('d4/QID4a3.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Dame Indienne, 4.Cc3</td><td>4.Cc3</td><td><span class="games">9271</span> <a class="btn-load" href="#" onclick="charger('d4/QID4Nc3.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Dame Indienne, 4.e3</td><td>4.e3</td><td><span class="games">4434</span> <a class="btn-load" href="#" onclick="charger('d4/QID4e3.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Dame Indienne, autres</td><td>4.Fg5/Ff4</td><td><span class="games">2187</span> <a class="btn-load" href="#" onclick="charger('d4/QIDOther.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Dame Indienne, 4.g3 Fa6</td><td>4.g3 Fa6</td><td><span class="games">18523</span> <a class="btn-load" href="#" onclick="charger('d4/QID4g3-Ba6.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Dame Indienne, 4.g3 autres</td><td>4.g3 Fb7/Fb4+</td><td><span class="games">19150</span> <a class="btn-load" href="#" onclick="charger('d4/QID4g3Other.pgn');return false;">Charger</a></td></tr>
+    </table>
+  </div>
+  <div class="group">
+    <div class="group-title">Nimzo-Indienne</div>
+    <table>
+      <tr><td>Nimzo, 4.Cf3</td><td>1.d4 Cf6 2.c4 e6 3.Cc3 Fb4 4.Cf3</td><td><span class="games">11418</span> <a class="btn-load" href="#" onclick="charger('d4/Nimzo4Nf3.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Nimzo, Saemisch</td><td>4.a3</td><td><span class="games">5056</span> <a class="btn-load" href="#" onclick="charger('d4/NimzoSaemisch.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Nimzo, Leningrad</td><td>4.Fg5</td><td><span class="games">4091</span> <a class="btn-load" href="#" onclick="charger('d4/NimzoLeningrad.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Nimzo, 4.f3</td><td>4.f3</td><td><span class="games">9523</span> <a class="btn-load" href="#" onclick="charger('d4/Nimzo4f3.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Nimzo, autres 4e coups</td><td>4.g3/Db3/Fd2</td><td><span class="games">6575</span> <a class="btn-load" href="#" onclick="charger('d4/NimzoOther4.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Nimzo Classique, 4...O-O</td><td>4.Dc2 O-O</td><td><span class="games">17328</span> <a class="btn-load" href="#" onclick="charger('d4/NimzoCl4O-O.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Nimzo Classique, 4...c5</td><td>4.Dc2 c5</td><td><span class="games">8153</span> <a class="btn-load" href="#" onclick="charger('d4/NimzoCl4c5.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Nimzo Classique, autres</td><td>4.Dc2 d5/Cc6/b6/d6</td><td><span class="games">13037</span> <a class="btn-load" href="#" onclick="charger('d4/NimzoClOther.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Nimzo Rubinstein, 4...O-O</td><td>4.e3 O-O</td><td><span class="games">28850</span> <a class="btn-load" href="#" onclick="charger('d4/NimzoRub4O-O.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Nimzo Rubinstein, 4...c5</td><td>4.e3 c5</td><td><span class="games">9687</span> <a class="btn-load" href="#" onclick="charger('d4/NimzoRub4c5.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Nimzo Rubinstein, autres</td><td>4.e3 b6/d5/Cc6/Fxc3+</td><td><span class="games">11780</span> <a class="btn-load" href="#" onclick="charger('d4/NimzoRubOther.pgn');return false;">Charger</a></td></tr>
+    </table>
+  </div>
+  <div class="group">
+    <div class="group-title">Roi Indien</div>
+    <table>
+      <tr><td>Roi Indien, Averbakh</td><td>4.e4 d6 5.Fe2 O-O 6.Fg5</td><td><span class="games">10311</span> <a class="btn-load" href="#" onclick="charger('d4/KIDAverbakh.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Roi Indien, Fianchetto</td><td>1.c4 Cf6 2.d4 g6 3.g3 Fg7 4.Fg2 d6 5.Cf3 O-O</td><td><span class="games">25411</span> <a class="btn-load" href="#" onclick="charger('d4/KIDFianchetto.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Roi Indien, 4 Pions</td><td>4.e4 d6 5.f4</td><td><span class="games">8731</span> <a class="btn-load" href="#" onclick="charger('d4/KID4pawns.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Roi Indien, Saemisch</td><td>4.e4 d6 5.f3</td><td><span class="games">29455</span> <a class="btn-load" href="#" onclick="charger('d4/KIDSaemisch.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Roi Indien, Classique</td><td>5.Cf3 O-O 6.Fe2 e5 7.O-O Cc6</td><td><span class="games">23565</span> <a class="btn-load" href="#" onclick="charger('d4/KIDClassical.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Roi Indien, Classique autres 7e</td><td>5.Cf3 O-O 6.Fe2 e5 7.Fe3/dxe5...</td><td><span class="games">44621</span> <a class="btn-load" href="#" onclick="charger('d4/KIDOther7.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Roi Indien, Pétrossian</td><td>5.Cf3 O-O 6.Fe2 e5 7.d5</td><td><span class="games">8609</span> <a class="btn-load" href="#" onclick="charger('d4/KIDPetrosian.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Roi Indien, autres 5e/6e</td><td>5.Cf3 Fg4/Cbd7/c6/c5</td><td><span class="games">17831</span> <a class="btn-load" href="#" onclick="charger('d4/KIDOther56.pgn');return false;">Charger</a></td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- DÉFENSES 1.d4 -->
+<div class="section" id="tab-d4d">
+  <div class="group">
+    <div class="group-title">Gambit Dame Accepté</div>
+    <table>
+      <tr><td>GDA, 3.e4</td><td>1.d4 d5 2.c4 dxc4 3.e4</td><td><span class="games">7920</span> <a class="btn-load" href="#" onclick="charger('d4-defense/QGA3e4.pgn');return false;">Charger</a></td></tr>
+      <tr><td>GDA, autres 3e coups</td><td>3.Cf3 a6/c5</td><td><span class="games">4445</span> <a class="btn-load" href="#" onclick="charger('d4-defense/QGAOther3.pgn');return false;">Charger</a></td></tr>
+      <tr><td>GDA, autres 4e coups</td><td>3.Cf3 Cf6 4.c3/a4+/e3 Fg4/a6/g6/c5</td><td><span class="games">10918</span> <a class="btn-load" href="#" onclick="charger('d4-defense/QGAOther4.pgn');return false;">Charger</a></td></tr>
+      <tr><td>GDA, Ligne Principale</td><td>3.Cf3 Cf6 4.e3 e6 5.Fxc4 c5</td><td><span class="games">11257</span> <a class="btn-load" href="#" onclick="charger('d4-defense/QGAMain.pgn');return false;">Charger</a></td></tr>
+    </table>
+  </div>
+  <div class="group">
+    <div class="group-title">Gambit Dame Refusé</div>
+    <table>
+      <tr><td>GDR, autres 3e et 4e coups</td><td>1.d4 d5 2.c4 e6 3.Cf3 c5 / 3.Cc3...</td><td><span class="games">49405</span> <a class="btn-load" href="#" onclick="charger('d4-defense/QGDOther34.pgn');return false;">Charger</a></td></tr>
+      <tr><td>GDR Tarrasch</td><td>1.d4 d5 2.c4 e6 3.Cc3 c5</td><td><span class="games">10515</span> <a class="btn-load" href="#" onclick="charger('d4-defense/QGDTarrasch.pgn');return false;">Charger</a></td></tr>
+      <tr><td>GDR Échange</td><td>3.Cc3 Cf6 4.cxd5</td><td><span class="games">34100</span> <a class="btn-load" href="#" onclick="charger('d4-defense/QGDExchange.pgn');return false;">Charger</a></td></tr>
+      <tr><td>GDR, 5.Ff4</td><td>3.Cc3 Cf6 4.Cf3 Fe7 5.Ff4</td><td><span class="games">14186</span> <a class="btn-load" href="#" onclick="charger('d4-defense/QGD5Bf4.pgn');return false;">Charger</a></td></tr>
+      <tr><td>GDR Semi-Tarrasch, 5.e3 c6</td><td>3.Cc3 Cf6 4.Cf3 c5 5.e3 c6</td><td><span class="games">6650</span> <a class="btn-load" href="#" onclick="charger('d4-defense/SemiTarr5e3-Nc6.pgn');return false;">Charger</a></td></tr>
+      <tr><td>GDR Semi-Tarrasch, Principale</td><td>3.Cc3 Cf6 4.Cf3 c5 5.cxd5</td><td><span class="games">6771</span> <a class="btn-load" href="#" onclick="charger('d4-defense/SemiTarraschMain.pgn');return false;">Charger</a></td></tr>
+      <tr><td>GDR Orthodoxe, autres 4e</td><td>3.Cc3 Cf6 4.Fg5 Cbd7/c5/Fb4</td><td><span class="games">7066</span> <a class="btn-load" href="#" onclick="charger('d4-defense/QGDOrthoOther4.pgn');return false;">Charger</a></td></tr>
+      <tr><td>GDR Orthodoxe, Principale</td><td>3.Cc3 Cf6 4.Fg5 Fe7</td><td><span class="games">14794</span> <a class="btn-load" href="#" onclick="charger('d4-defense/QGDOrthoMain.pgn');return false;">Charger</a></td></tr>
+    </table>
+  </div>
+  <div class="group">
+    <div class="group-title">Slave & Semi-Slave</div>
+    <table>
+      <tr><td>Slave, autres 3e et 4e coups</td><td>1.d4 d5 2.c4 c6 3.Cf3 dxc4 / 3.Cf3 Cf6 4.Dc2/b3/g3/Cbd2</td><td><span class="games">21354</span> <a class="btn-load" href="#" onclick="charger('d4-defense/SlavOther34.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Slave, Échange</td><td>3.Cf3 Cf6 4.cxd5 cxd5 5.Cc3</td><td><span class="games">11796</span> <a class="btn-load" href="#" onclick="charger('d4-defense/SlavExchange.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Slave, 4...a6</td><td>3.Cf3 Cf6 4.Cc3 a6</td><td><span class="games">12311</span> <a class="btn-load" href="#" onclick="charger('d4-defense/Slav4a6.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Slave, autres 5e coups</td><td>4.Cc3 dxc4 5.e4/e3/e5/g3</td><td><span class="games">7417</span> <a class="btn-load" href="#" onclick="charger('d4-defense/SlavOther5.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Slave, Ligne Principale</td><td>4.Cc3 dxc4 5.a4 f5</td><td><span class="games">18394</span> <a class="btn-load" href="#" onclick="charger('d4-defense/SlavMain.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Semi-Slave, autres 5e coups</td><td>3.Cf3 Cf6 4.Cc3 c6 5.b3/f4</td><td><span class="games">1680</span> <a class="btn-load" href="#" onclick="charger('d4-defense/SemiSlavOther5.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Semi-Slave Botvinnik</td><td>3.Cf3 Cf6 4.Cc3 c6 5.Fg5</td><td><span class="games">22354</span> <a class="btn-load" href="#" onclick="charger('d4-defense/SemiSlavBotvinnik.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Semi-Slave Meran</td><td>3.Cc3 Cf6 4.Cf3 c6 5.e3</td><td><span class="games">43011</span> <a class="btn-load" href="#" onclick="charger('d4-defense/SemiSlavMeran.pgn');return false;">Charger</a></td></tr>
+    </table>
+  </div>
+  <div class="group">
+    <div class="group-title">Autres défenses 1.d4</div>
+    <table>
+      <tr><td>GD Symétrique & Baltique</td><td>1.d4 d5 2.c4 c5 / 1.d4 d5 2.c4 f5</td><td><span class="games">3671</span> <a class="btn-load" href="#" onclick="charger('d4-defense/QGSym-Baltic.pgn');return false;">Charger</a></td></tr>
+      <tr><td>GD Albin Contre-Gambit</td><td>1.d4 d5 2.c4 e5</td><td><span class="games">5492</span> <a class="btn-load" href="#" onclick="charger('d4-defense/QG-Albin.pgn');return false;">Charger</a></td></tr>
+      <tr><td>GD Chigorin</td><td>1.d4 d5 2.c4 Cc6</td><td><span class="games">6724</span> <a class="btn-load" href="#" onclick="charger('d4-defense/QG-Chigorin.pgn');return false;">Charger</a></td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ANGLAISE 1.c4 -->
+<div class="section" id="tab-c4">
+  <div class="group">
+    <div class="group-title">Anglaise — 1er coup noir</div>
+    <table>
+      <tr><td>Anglaise, 1...b6</td><td>1.c4 b6</td><td><span class="games">5597</span> <a class="btn-load" href="#" onclick="charger('c4/English1b6.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Anglaise, 1...f5</td><td>1.c4 f5</td><td><span class="games">10283</span> <a class="btn-load" href="#" onclick="charger('c4/English1f5.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Anglaise, 1...c6</td><td>1.c4 c6</td><td><span class="games">26295</span> <a class="btn-load" href="#" onclick="charger('c4/English1c6.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Anglaise, 1...g6</td><td>1.c4 g6</td><td><span class="games">26391</span> <a class="btn-load" href="#" onclick="charger('c4/English1g6.pgn');return false;">Charger</a></td></tr>
+    </table>
+  </div>
+  <div class="group">
+    <div class="group-title">Anglaise Symétrique (1...c5)</div>
+    <table>
+      <tr><td>Double Fianchetto</td><td>1.c4 c5 2.Cf3 Cf6 3.g3 b6 4.Fg2 Fb7 5.O-O g6</td><td><span class="games">2969</span> <a class="btn-load" href="#" onclick="charger('c4/EngSymDoubleFianchetto.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Hérisson</td><td>5.O-O e6</td><td><span class="games">6072</span> <a class="btn-load" href="#" onclick="charger('c4/EnglishSymHedgehog.pgn');return false;">Charger</a></td></tr>
+      <tr><td>3.d4</td><td>1.c4 c5 2.Cf3 Cf6 3.d4</td><td><span class="games">11170</span> <a class="btn-load" href="#" onclick="charger('c4/EnglishSym3d4.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Autres 3e coups noirs</td><td>2.Cc3 Cf6 3.Cf3 e6/d5/g6/b6</td><td><span class="games">18681</span> <a class="btn-load" href="#" onclick="charger('c4/EnglishSymOtherB3.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Quatre Cavaliers</td><td>2.Cc3 Cf6 3.Cf3 Cc6</td><td><span class="games">11103</span> <a class="btn-load" href="#" onclick="charger('c4/EnglishSymFourKnights.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Ligne Principale</td><td>2.Cc3 Cc6 3.g3 g6 4.Fg2 Fg7</td><td><span class="games">16164</span> <a class="btn-load" href="#" onclick="charger('c4/EnglishSymMain.pgn');return false;">Charger</a></td></tr>
+    </table>
+  </div>
+  <div class="group">
+    <div class="group-title">Anglaise — 1...e6</div>
+    <table>
+      <tr><td>1...e6, 2.Cf3 d5</td><td>1.c4 e6 2.Cf3 d5</td><td><span class="games">22419</span> <a class="btn-load" href="#" onclick="charger('c4/English1e6-2Nf3-d5.pgn');return false;">Charger</a></td></tr>
+      <tr><td>1...e6, 2.Cc3 d5</td><td>1.c4 e6 2.Cc3 d5</td><td><span class="games">12963</span> <a class="btn-load" href="#" onclick="charger('c4/English1e6-2Nc3-d5.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Flohr-Mikenas</td><td>1.c4 e6 2.Cc3 Cf6 3.e4</td><td><span class="games">7186</span> <a class="btn-load" href="#" onclick="charger('c4/EnglishFlohr-Mikenas.pgn');return false;">Charger</a></td></tr>
+      <tr><td>1...e6, Ligne Principale</td><td>1.c4 e6 2.Cc3 Cf6 3.Cf3</td><td><span class="games">17700</span> <a class="btn-load" href="#" onclick="charger('c4/English1e6Main.pgn');return false;">Charger</a></td></tr>
+    </table>
+  </div>
+  <div class="group">
+    <div class="group-title">Anglaise — Sicilienne Renversée (1...e5)</div>
+    <table>
+      <tr><td>2.g3</td><td>1.c4 e5 2.g3</td><td><span class="games">25985</span> <a class="btn-load" href="#" onclick="charger('c4/EnglishSicRev2g3.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Autres 2e coups noirs</td><td>1.c4 e5 2.Cc3 d6/b4</td><td><span class="games">10560</span> <a class="btn-load" href="#" onclick="charger('c4/EnglishSicRevOtherB2.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Quatre Cavaliers</td><td>2.Cc3 Cf6 3.Cf3 Cc6</td><td><span class="games">19082</span> <a class="btn-load" href="#" onclick="charger('c4/EnglishSicRev4Knights.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Brême</td><td>2.Cc3 Cf6 3.g3</td><td><span class="games">13229</span> <a class="btn-load" href="#" onclick="charger('c4/EnglishSicRevBremen.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Fermée</td><td>2.Cc3 Cc6</td><td><span class="games">15532</span> <a class="btn-load" href="#" onclick="charger('c4/EnglishSicRevClosed.pgn');return false;">Charger</a></td></tr>
+    </table>
+  </div>
+  <div class="group">
+    <div class="group-title">Anglaise — Anglo-Indienne (1...Cf6)</div>
+    <table>
+      <tr><td>1...Cf6, 2.g3</td><td>1.c4 Cf6 2.g3</td><td><span class="games">19942</span> <a class="btn-load" href="#" onclick="charger('c4/English1Nf6-2g3.pgn');return false;">Charger</a></td></tr>
+      <tr><td>1...Cf6, 2.Cf3</td><td>1.c4 Cf6 2.Cf3 g6 3.g3 Fg7 4.Fg2 O-O</td><td><span class="games">13656</span> <a class="btn-load" href="#" onclick="charger('c4/English1Nf6-2Nf3.pgn');return false;">Charger</a></td></tr>
+      <tr><td>1...Cf6, 2.Cc3</td><td>1.c4 Cf6 2.Cc3 g6</td><td><span class="games">22924</span> <a class="btn-load" href="#" onclick="charger('c4/English1Nf6-2Nc3.pgn');return false;">Charger</a></td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- AUTRES -->
+<div class="section" id="tab-autres">
+  <div class="group">
+    <div class="group-title">Réti</div>
+    <table>
+      <tr><td>Réti, 2.b3</td><td>1.Cf3 d5 2.b3</td><td><span class="games">9422</span> <a class="btn-load" href="#" onclick="charger('autres/Reti2b3.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Réti, 2.c4</td><td>1.Cf3 d5 2.c4</td><td><span class="games">30568</span> <a class="btn-load" href="#" onclick="charger('autres/Reti2c4.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Réti, Attaque KID</td><td>1.Cf3 d5 2.g3</td><td><span class="games">62563</span> <a class="btn-load" href="#" onclick="charger('autres/RetiKIA.pgn');return false;">Charger</a></td></tr>
+    </table>
+  </div>
+  <div class="group">
+    <div class="group-title">Flanc et irrégulières</div>
+    <table>
+      <tr><td>Bird</td><td>1.f4</td><td><span class="games">24485</span> <a class="btn-load" href="#" onclick="charger('autres/Bird.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Nimzowitsch-Larsen</td><td>1.b3</td><td><span class="games">36099</span> <a class="btn-load" href="#" onclick="charger('autres/Nimzowitsch-Larsen.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Sokolsky</td><td>1.b4</td><td><span class="games">7756</span> <a class="btn-load" href="#" onclick="charger('autres/Sokolsky.pgn');return false;">Charger</a></td></tr>
+      <tr><td>Dunst</td><td>1.c3</td><td><span class="games">11549</span> <a class="btn-load" href="#" onclick="charger('autres/Dunst.pgn');return false;">Charger</a></td></tr>
+    </table>
+  </div>
+</div>
+
+<script>
+const RAW = "https://raw.githubusercontent.com/Ymorale-be/Mes-parties/main/";
+const VIEWER = "https://ymorale-be.github.io/Visionneur/?pgn=";
+
+function showTab(id){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelector(`[onclick="showTab('${id}')"]`).classList.add('active');
+  document.getElementById('tab-'+id).classList.add('active');
+}
+
+function charger(path){
+  const url = RAW + path;
+  window.open(VIEWER + encodeURIComponent(url), '_blank');
+}
+</script>
+</body>
+</html>
