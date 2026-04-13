@@ -1,0 +1,12 @@
+{
+  "device_id": "samsung_a7_01",
+  "rotom_worker_endpoint": "ws://192.168.0.227:7070",
+  "rotom_device_endpoint": "ws://192.168.0.227:7070/control",
+  "use_local_safetynet": true,
+  "public_ip": "192.168.0.227",
+  "workers": 3,
+  "token": "3DPpnWdSY+Tvg8nNDh7yvjKzv79DN1gw4fmmP9L8Zp3nR98QowoEKio6ZSnByoKfFixwvDSuY0MMAHyny/8jKfpPrPOySjCUdAN1X2CFH/E0fVOhTkXJK+zMiU2su3fOHnB6I0i296e4HbviF/PXsa5i2jFLAgMBIcp2ur5/CLw=",
+  "rotom_secret": "rotom_secret",
+  "injection_delay_ms": 5000,
+  "pogo_heartbeat_timeout_ms": 45000
+}
