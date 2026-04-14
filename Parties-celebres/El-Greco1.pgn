@@ -1,0 +1,29 @@
+[Event "Greco Game 1"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "1"]
+[White "Greco"]
+[Black "Greco"]
+[Result "1-0"]
+[Opening "Giuoco Piano"]
+
+1. e4 {Contrôle du centre} e5 {Réponse classique}
+2. Nf3 {Développement du cavalier} Nc6 {Défense naturelle}
+3. Bc4 {Menace sur f7} Bc5 {Symétrie}
+4. c3 {Prépare d4} Nf6 {Développement}
+5. d4 {Ouverture du centre} exd4 {Capture}
+6. cxd4 {Reprise} Bb4+ {Échec}
+7. Nc3 {Défense} Nxe4 {Gain de pion}
+8. O-O {Roque} Nxc3 {Échange}
+9. bxc3 {Structure doublée} Bxc3 {Gain matériel}
+10. Qb3 {Pression} Bxa1 {Prend la tour}
+11. Bxf7+ {Sacrifice} Kf8 {Roi exposé}
+12. Bg5 {Attaque} Ne7 {Défense}
+13. Ne5 {Centre} Bxd4 {Prend}
+14. Bg6 {Pression} d5 {Bloque}
+15. Qf3+ {Échec} Bf5 {Interpose}
+16. Bxf5 {Échange} Bxe5 {Continue}
+17. Be6+ {Attaque} Bf6 {Défense}
+18. Bxf6 {Échange} gxf6 {Structure abîmée}
+19. Qxf6+ {Échec} Ke8 {Roi au centre}
+20. Qf7# {Mat} 1-0
