@@ -1,0 +1,37 @@
+[Event "Greco Game 1"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "1"]
+[White "Greco"]
+[Black "Greco"]
+[Result "1-0"]
+[Opening "Giuoco Piano"]
+
+1. e4 {Contrôle du centre} e5 {Réponse classique}
+2. Nf3 {Développement du cavalier} Nc6 {Défense naturelle}
+3. Bc4 {Menace sur f7} Bc5 {Jeu italien}
+4. c3 {Prépare d4} Nf6 {Développement}
+5. d4 {Ouverture du centre} exd4 {Accepté}
+6. cxd4 {Reprise} Bb4+ {Échec intermédiaire}
+7. Nc3 {Défense} Nxe4 {Prend un pion}
+(7... Bxc3+ {Alternative plus solide} 
+    8. bxc3 {Structure modifiée} d5 {Contre au centre}
+    (8... d6 {Jeu plus calme} 9. O-O {Développement} Nf6)
+    9. Bd3 {Développement} Nf6 {Position jouable})
+8. O-O {Mise en sécurité du roi} Nxc3 {Échange}
+9. bxc3 {Colonne ouverte} Bxc3 {Gain matériel}
+10. Qb3 {Pression sur f7} Bxa1 {Prend la tour}
+(10... O-O {Plus prudent} 
+    11. Qxc3 {Récupère du matériel} d5 {Contre-jeu}
+    (11... d6 {Solide} 12. Bg5 {Pression} Qe8)
+    12. Bd3 {Bonne case} Bg4 {Activité})
+11. Bxf7+ {Sacrifice classique} Kf8 {Roi exposé}
+12. Bg5 {Développement avec menace} Ne7 {Défense}
+13. Ne5 {Pièce centrale active} Bxd4 {Prend du matériel}
+14. Bg6 {Pression sur le roi} d5 {Bloque}
+15. Qf3+ {Échec fort} Bf5 {Interpose}
+16. Bxf5 {Échange} Bxe5 {Continue}
+17. Be6+ {Attaque décisive} Bf6 {Défense forcée}
+18. Bxf6 {Échange critique} gxf6 {Structure détruite}
+19. Qxf6+ {Échec} Ke8 {Roi au centre}
+20. Qf7# {Mat final} 1-0
